@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from "react";
+
+import Todo from './Todo';
+
+// rework this into regular api call, feel free to use any open api
+var todos = (): Promise<{id: string; title: string;}[]> => new Promise((res) => {
+	setTimeout(() => {
+		res([
+			{
+				id: "1",
+				title: "Go shopping",
+			},
+			{
+				id: "2",
+				title: "Job interview",
+			},
+			{
+				id: "3",
+				title: "Prepare homework",
+			},
+		]);
+	}, 100);
+});
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [state, setState] = React.useState<{ id: string; title: string }[]>([]);
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	React.useEffect(() => {
+		(async () => {
+			var awaitedTodos = await todos();
+			for (var i = 0; i < awaitedTodos.length; i++) {
+				setState([...state, awaitedTodos[i]]);
+			}
+		})()
+	})
+
+	return (
+		<div>
+			{state.map((todo) => (
+				<Todo todo={todo} />
+			))}
+		</div>
+	);
 }
 
-export default App
+export default App;
