@@ -1,5 +1,6 @@
+import styled from 'styled-components';
+import {useGetAllTodos} from '../../model/Todo/getAllTodos';
 import Todo from '../atoms/Todo';
-import {useGetAllTodos} from '../model/Todo/getAllTodos';
 
 export default function Todos() {
 	const {
@@ -9,10 +10,16 @@ export default function Todos() {
 	if (isLoading || error) return <div>Loading!</div>;
 
 	return (
-		<div>
+		<Container>
 			{data?.map((todo) => (
 				<Todo todo={todo} key={todo.id}/>
 			))}
-		</div>
+		</Container>
 	);
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${props => props.theme.sizes.l};
+`;

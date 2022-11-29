@@ -22,7 +22,7 @@ export const todos = (): Promise<unknown> => new Promise((res) => {
 			},
 			{
 				id: '2',
-				title: 'Job interview',
+				title: 'Very very long text. Very very long text. Very very long text. Very very long text. Very very long text. Very very long text. Very very long text.',
 			},
 			{
 				id: '3',
