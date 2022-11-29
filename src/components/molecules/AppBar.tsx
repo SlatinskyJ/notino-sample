@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import {H1} from '../atoms/Text';
 
+export default function AppBar() {
+	return <AppBarContainer>
+		<H1>TodoApp</H1>
+	</AppBarContainer>;
+};
+
 const AppBarContainer = styled.div`
   width: 100%;
   height: 100px;
@@ -11,9 +17,3 @@ const AppBarContainer = styled.div`
   position: absolute;
   top: 0;
 `;
-
-export default function AppBar() {
-	return <AppBarContainer>
-		<H1>TodoApp</H1>
-	</AppBarContainer>;
-};

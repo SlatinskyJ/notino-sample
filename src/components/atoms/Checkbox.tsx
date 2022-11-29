@@ -7,7 +7,7 @@ type Props = {
 }
 
 export default function Checkbox({value, inputProps}: Props) {
-	return <StyledInput type="checkbox" checked={value} {...inputProps}/>;
+	return <StyledInput type="checkbox" checked={value} {...inputProps} readOnly/>;
 }
 
 const StyledInput = styled.input`

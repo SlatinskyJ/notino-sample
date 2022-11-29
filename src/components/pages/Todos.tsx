@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import styled from 'styled-components';
-import fetchAllTodos from '../../model/Todo/getAllTodos';
+import fetchAllTodos from '../../model/Todo/services/getAllTodos';
 import Todo from '../molecules/Todo';
 
 export default function Todos() {
