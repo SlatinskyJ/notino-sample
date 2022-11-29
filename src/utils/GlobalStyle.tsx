@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 24px;
     font-weight: 400;
 
-    color: ${props => props.theme.colors.text}
+    color: ${props => props.theme.colors.text};
+    overflow: hidden;
   }
 `;
 

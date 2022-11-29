@@ -4,10 +4,16 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
 import App from './App';
-import GlobalStyle from './GlobalStyle';
 import theme from './theme';
+import GlobalStyle from './utils/GlobalStyle';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: import.meta.env.MODE !== 'development'
+		}
+	}
+});
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>

@@ -1,8 +1,10 @@
 import {z} from 'zod';
 
 export const TodoTypeValidator = z.object({
-	id: z.string(),
+	completed: z.boolean(),
+	id: z.number(),
 	title: z.string(),
+	userId: z.number()
 });
 
 export type TodoType = z.infer<typeof TodoTypeValidator>;
