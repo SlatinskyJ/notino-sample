@@ -1,7 +1,7 @@
 import {useQuery} from '@tanstack/react-query';
 import styled from 'styled-components';
 import fetchAllTodos from '../../model/Todo/getAllTodos';
-import Todo from '../atoms/Todo';
+import Todo from '../molecules/Todo';
 
 export default function Todos() {
 	const {data, isLoading, error} = useQuery(['getAllTodos'], () => fetchAllTodos());
